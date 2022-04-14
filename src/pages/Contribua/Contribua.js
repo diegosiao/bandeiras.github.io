@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import QRCodeDoacao from "../../components/QRCode/QRCodeDoacao";
 
-const valores = ["1", "5", "10"];
+const valores = ["1", "5", "10", "50", "100"];
 
 const Contribua = () => {
   const [valor, setValor] = useState("5");
@@ -46,8 +47,19 @@ const Contribua = () => {
                 value={item}
               >{`Contribua com R$${item}`}</option>
             ))}
-            <option value="?">Contribua com qualquer valor</option>
+            <option value="0">Contribua com qualquer valor</option>
           </Form.Select>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <br />
+          <QRCodeDoacao valor={valor} />
+          <br />
+          <span style={{ color: "gray", fontSize: "x-small" }}>
+            Chave PIX: bandeirasdobrasil@outlook.com em nome de Diego Morais de
+            Medeiros Rodrigues
+          </span>
         </Col>
       </Row>
       <Row>
