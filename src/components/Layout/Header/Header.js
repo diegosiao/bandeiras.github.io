@@ -22,7 +22,7 @@ const Header = () => {
         <Row>
           <Col xs={4}></Col>
           <Col xs={4}>
-            <h1 style={{ textAlign: "center" }}>Bandeiras do Brasil</h1>
+            <h1 style={{ textAlign: "center" }}>Bandeiras do Brasil.org</h1>
           </Col>
           <Col></Col>
         </Row>
