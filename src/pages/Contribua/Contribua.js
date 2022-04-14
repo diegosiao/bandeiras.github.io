@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "../../components/Layout/Title/PageTitle";
 import QRCodeDoacao from "../../components/QRCode/QRCodeDoacao";
 
 const valores = ["1", "5", "10", "50", "100"];
@@ -8,34 +9,31 @@ const valores = ["1", "5", "10", "50", "100"];
 const Contribua = () => {
   const [valor, setValor] = useState("5");
   const navigate = useNavigate();
-
-  console.log(valor);
   return (
     <>
-      <Row>
-        <h1>Contribua</h1>
-        <h3>A Internet é cheia de anúncios. Aqui não.</h3>
-      </Row>
+      <PageTitle
+        title="Contribua"
+        subtitle="A Internet é cheia de anúncios. Aqui não."
+      />
       <Row>
         <Col>
-          <p>
-            Para manter esse projeto contamos com a sua ajuda. Manter um site
-            funcionando envolve grandes despesas. Mas até aqui, o apoio de
-            brasileiros que amam seu país e lutam por um futuro melhor tem sido
-            o bastante para seguir em frente.
-          </p>
+          Para manter esse projeto contamos unicamente com a sua ajuda. Manter
+          um site funcionando envolve grandes despesas. Mas acreditamos que o
+          apoio de brasileiros que amam seu país e lutam por um futuro melhor é
+          o suficiente para seguir em frente.
         </Col>
       </Row>
       <Row>
         <Col>
-          <p>
+          <b>
             Não aceitamos doações de políticos, empresas ou grupos de interesse.
             Apenas cidadãos.
-          </p>
+          </b>
         </Col>
       </Row>
       <Row>
-        <Col xs={6}>
+        <Col xs={12} md={6}>
+          <br />
           <Form.Select
             size="lg"
             value={valor}
@@ -45,27 +43,26 @@ const Contribua = () => {
               <option
                 key={item}
                 value={item}
-              >{`Contribua com R$${item}`}</option>
+              >{`Contribua via PIX com R$${item}`}</option>
             ))}
-            <option value="0">Contribua com qualquer valor</option>
+            <option value="0">Contribua via PIX com qualquer valor</option>
           </Form.Select>
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <Row style={{ textAlign: "center" }}>
+        <Col xs={12} md={6}>
           <br />
           <QRCodeDoacao valor={valor} />
           <br />
-          <span style={{ color: "gray", fontSize: "x-small" }}>
-            Chave PIX: bandeirasdobrasil@outlook.com em nome de Diego Morais de
-            Medeiros Rodrigues
+          <span style={{ color: "gray", fontSize: "small" }}>
+            Chave PIX: <b>bandeirasdobrasil@outlook.com</b> em nome de Diego
+            Morais de Medeiros Rodrigues
           </span>
         </Col>
       </Row>
-      <Row>
+      <Row className="mt-4">
         <Col>
-          <br />
-          <Button onClick={() => navigate("/")}>Voltar</Button>
+          <Button onClick={() => navigate(-1)}>Voltar</Button>
         </Col>
       </Row>
     </>
